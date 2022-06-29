@@ -8,7 +8,8 @@ namespace WinFormsApp4
             BackgroundImage = Image.FromFile(@"71R5y3NAQSL.jpg");
             this.BackgroundImageLayout = ImageLayout.Zoom;
             Shown += ButtonLoad;
-            button2.Click += button2_Click; 
+            button1.Click += button1_Click;
+            button2.Click += button2_Click;
         }
         void ButtonLoad(object sender , EventArgs e)
         {
