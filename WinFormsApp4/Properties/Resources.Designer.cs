@@ -59,5 +59,25 @@ namespace WinFormsApp4.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _17550 {
+            get {
+                object obj = ResourceManager.GetObject("17550", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap close_exit_stop_button_icon_95968 {
+            get {
+                object obj = ResourceManager.GetObject("close-exit-stop-button-icon-95968", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
