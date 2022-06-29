@@ -13,25 +13,25 @@ namespace WinFormsApp4
 {
     public partial class Form3 : Form
     {
-        Timer t;
-        DateTime dt = DateTime.Now;
-        
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         public Form3()
         {
             InitializeComponent();
-            
-            t = new Timer();
-            t.Interval = 1000;
-            Shown += Update;
+            Shown += Form1_Load;
         }
-        void Update(object sender, EventArgs e)
+
+        
+        private void Form1_Load(object sender, EventArgs e)
         {
-            DateTime dt1 = DateTime.Now.AddSeconds(5.0);
-            if (dt < dt1)
-            {
-                this.Close();
-            }
-            
+            timer.Interval = 5000;
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
         }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
