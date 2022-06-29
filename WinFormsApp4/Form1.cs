@@ -29,6 +29,14 @@ namespace WinFormsApp4
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form3 m = new Form3();
+            m.ShowDialog();
+        }
+         
+        
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
