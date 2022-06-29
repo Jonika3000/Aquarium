@@ -31,7 +31,10 @@ namespace WinFormsApp4
 
         void timer_Tick(object sender, EventArgs e)
         {
-            this.Close();
+            timer.Stop();
+            this.Hide();
+            Game game = new Game();
+            game.ShowDialog();
         }
 
     }
