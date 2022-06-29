@@ -33,7 +33,7 @@ namespace WinFormsApp4
             //Form3 lf = new Form3();
             //lf.ShowDialog();
             //Game g = new Game();
-            //g.ShowDialog();
+            g.ShowDialog();
         }
     }
 }
