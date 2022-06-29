@@ -31,7 +31,7 @@ namespace WinFormsApp4
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             Form3 m = new Form3();
             m.ShowDialog();
         }

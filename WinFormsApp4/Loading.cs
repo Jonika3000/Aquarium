@@ -18,6 +18,7 @@ namespace WinFormsApp4
         {
             InitializeComponent();
             Shown += Form1_Load;
+
         }
 
         
