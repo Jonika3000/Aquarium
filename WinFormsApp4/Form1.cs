@@ -30,10 +30,7 @@ namespace WinFormsApp4
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Form3 lf = new Form3();
-            //lf.ShowDialog();
-            //Game g = new Game();
-            g.ShowDialog();
+            this.Close();
         }
     }
 }
