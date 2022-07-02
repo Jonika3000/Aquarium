@@ -38,6 +38,10 @@ namespace WinFormsApp4
         {
             RandomButtons();
         }
+        void Move()
+        {
+
+        }
         private void RandomButtons()
         {
           Random rnd1 = new Random();//
