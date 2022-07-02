@@ -15,6 +15,7 @@ namespace WinFormsApp4
         List<Button> buttons;
         int Level = 1;
         bool buffer;
+        int FishIndex;
         public Game()
         {
             InitializeComponent();
@@ -42,10 +43,13 @@ namespace WinFormsApp4
         void Move(object sender, EventArgs e )
         {
             Button btn = (Button)sender;
+            var idx =  buttons.FindIndex(a => a.Name == btn.Name);
+
             if(buffer == false)//если ми берем рыбу
             {
                 buffer = true;
                 btn.BackgroundImage = null;
+                
             }
             else//еслы ми имеем рыбу
             {
