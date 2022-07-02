@@ -129,7 +129,6 @@ namespace WinFormsApp4
             }
             
         }
-
         private void CheckRows(int index)
         {
             int r;
@@ -145,6 +144,19 @@ namespace WinFormsApp4
                 }
             }while(r > 0);
             
+        }
+        private void SwitchLevel()
+        {
+            int count = 0;
+            foreach (Button button in buttons)
+            {
+                if(button.BackgroundImage == null)
+                    count++;
+            }
+            if(count == 30)
+            {
+                Level++;
+                RandomButtons();            }
         }
         private void button14_Click(object sender, EventArgs e)
         {
