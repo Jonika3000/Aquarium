@@ -133,9 +133,10 @@ namespace WinFormsApp4
         private void CheckRows(int index)
         {
             int r;
+            r = index;
             do
             {
-                r = index;
+                
                 r = r - 6;
                 if (buttons[r].ImageIndex == index)
                 {
