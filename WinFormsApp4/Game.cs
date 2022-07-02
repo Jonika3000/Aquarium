@@ -17,10 +17,11 @@ namespace WinFormsApp4
         public Game()
         {
             InitializeComponent();
-            buttons = new List<Button>() { button2, button3 , button4, button5, button6, button7 , button8 , button9,
-            button10 , button11 , button12 , button13 , button14 , button15 , button16 , button17 ,
-            button18 , button19 , button20 , button21 , button22 , button23 , button24 , button25 , button26 , button27,
-            button28 , button29 , button30 , button31 };
+            buttons = new List<Button>() { button2, button3 , button4, button5, button6, button7 ,
+                                           button8 , button9 , button10 , button11 , button12 , button13 ,
+                                           button14 , button15 , button16 , button17 , button18 , button19 ,
+                                           button20 , button21 , button22 , button23 , button24 , button25 , 
+                                           button26 , button27 , button28 , button29 , button30 , button31 };
             BackgroundImage = Image.FromFile(@"71R5y3NAQSL.jpg");
             this.BackgroundImageLayout = ImageLayout.Zoom;
             button1.BackgroundImage = System.Drawing.Image.FromFile(@"close-exit-stop-button-icon-95968.png");
@@ -57,14 +58,44 @@ namespace WinFormsApp4
 
 
         }
+
+        private void CheckRows(int index)
+        {
+            int r;
+            do
+            {
+                r = index;
+                r = r - 6;
+                if(buttons[r].ImageIndex == index)
+                {
+                    buttons[r].Image = null;
+                    buttons[r].BackColor = Color.White;                }
+            }while(index > 0);
+            
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         private void button14_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void aye()
-        {
-
-        }
     }
+         
+
+        
 }
