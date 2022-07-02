@@ -137,11 +137,12 @@ namespace WinFormsApp4
             {
                 r = index;
                 r = r - 6;
-                if(buttons[r].ImageIndex == index)
+                if (buttons[r].ImageIndex == index)
                 {
-                    buttons[r].Image = null;
-                    buttons[r].BackColor = Color.White;                }
-            }while(index > 0);
+                    buttons[r].BackgroundImage = null;
+                    buttons[r].BackColor = Color.White;
+                }
+            }while(r > 0);
             
         }
         private void button14_Click(object sender, EventArgs e)
