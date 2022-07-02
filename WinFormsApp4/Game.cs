@@ -13,7 +13,8 @@ namespace WinFormsApp4
     public partial class Game : Form
     {
         List<Button> buttons;
-        int Level = 1; 
+        int Level = 1;
+        bool buffer;
         public Game()
         {
             InitializeComponent();
@@ -38,9 +39,21 @@ namespace WinFormsApp4
         {
             RandomButtons();
         }
-        void Move()
+        void Move(object sender, EventArgs e )
         {
-
+            Button btn = (Button)sender;
+            if(buffer == false)//если ми берем рыбу
+            {
+                buffer = true;
+                btn.BackgroundImage = null;
+            }
+            else//еслы ми имеем рыбу
+            {
+                if (btn.BackColor == Color.Red)
+                {
+                    
+                }
+            }
         }
         private void RandomButtons()
         {
@@ -134,8 +147,7 @@ namespace WinFormsApp4
             int r;
             r = index;
             do
-            {
-                
+            { 
                 r = r - 6;
                 if (buttons[r].ImageIndex == index)
                 {
