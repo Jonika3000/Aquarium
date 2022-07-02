@@ -39,24 +39,46 @@ namespace WinFormsApp4
         private void First(object sender , EventArgs e)
         {
             RandomButtons();
+            foreach(var b in buttons )
+            {
+                if (b.Name != "button1")
+                b.Click += Move;
+            }
         }
         void Move(object sender, EventArgs e )
         {
             Button btn = (Button)sender;
             var idx =  buttons.FindIndex(a => a.Name == btn.Name);
-
+            int o = 0;
             if(buffer == false)//если ми берем рыбу
             {
                 buffer = true;
                 btn.BackgroundImage = null;
-                
+                if (buttons[idx].Image == Image.FromFile(@"min.png"))
+                    FishIndex = 1;
+                if (buttons[idx].Image == Image.FromFile(@"ser.png"))
+                    FishIndex =2;
+                if (buttons[idx].Image == Image.FromFile(@"max.png"))
+                    FishIndex = 3;
             }
             else//еслы ми имеем рыбу
             {
-                if (btn.BackColor == Color.Red)
+                if (buttons[idx].Image == Image.FromFile(@"min.png"))
+                    o = 1;
+                if (buttons[idx].Image == Image.FromFile(@"ser.png"))
+                    o = 2;
+                if (buttons[idx].Image == Image.FromFile(@"max.png"))
+                    o = 3;
+                if ((buttons[idx].BackColor == Color.Red) && (FishIndex<o))
                 {
-                    
+                    CheckRows(idx);
                 }
+                else if (FishIndex < o)
+                {
+                    buttons[idx].BackColor = Color.Red;
+                }
+                buffer = false;
+                SwitchLevel();
             }
         }
         private void RandomButtons()
