@@ -24,6 +24,7 @@ namespace WinFormsApp4
                                            button26 , button27 , button28 , button29 , button30 , button31 };
             BackgroundImage = Image.FromFile(@"71R5y3NAQSL.jpg");
             this.BackgroundImageLayout = ImageLayout.Zoom;
+            Shown += First;
             button1.BackgroundImage = System.Drawing.Image.FromFile(@"close-exit-stop-button-icon-95968.png");
             button1.Text = "";
             button1.BackgroundImageLayout = ImageLayout.Stretch;
@@ -33,30 +34,96 @@ namespace WinFormsApp4
         {
             this.Close();
         }
-        private void RandomButtons(object sender , EventArgs e )
+        private void First(object sender , EventArgs e)
         {
-          Random rnd1 = new Random();
-          Random rnd = new Random();
+            RandomButtons();
+        }
+        private void RandomButtons()
+        {
+          Random rnd1 = new Random();//
+          Random rnd = new Random();//riba
+            int max = 0;
+            int min = 0;
+            int ser = 0;
+            int fish_count = 0;
             switch (Level)
             {
                 case 1:
-                    rnd1.Next(2, 7);
+                    fish_count= rnd.Next(3,5);
                     break;
                 case 2:
-                    rnd1.Next(8, 13);
+                    fish_count=rnd.Next(4, 7);
                     break;
                 case 3:
-                    rnd1.Next(14, 19);
+                    fish_count=rnd.Next(7, 10);
                     break;
                 case 4:
-                    rnd1.Next(20, 25);
+                    fish_count=rnd.Next(10, 12);
                     break;
-                    case 5:
-                    rnd1.Next(26, 31);
+                case 5:
+                    fish_count=rnd.Next(13, 15);
                     break;
             }
+            for (int i =0; i< fish_count; i++)
+            {
+                int bt=0;
+                int fish = rnd.Next(1, 3);
+                switch (Level)
+                {
+                    case 1:
+                        bt= rnd1.Next(2, 7);
+                        break;
+                    case 2:
+                        bt=rnd1.Next(8, 13);
+                        break;
+                    case 3:
+                        bt=rnd1.Next(14, 19);
+                        break;
+                    case 4:
+                        bt=rnd1.Next(20, 25);
+                        break;
+                    case 5:
+                        bt=rnd1.Next(26, 31);
+                        break;
+                }
+                if (buttons[bt].BackgroundImage == null)
+                {
 
-
+                    switch (fish)
+                    {
+                        case 1:
+                            if (((ser != 0) || (max != 0)) && ((min < (ser * 2)) || (min < (max * 2))))
+                            {
+                                buttons[bt].BackgroundImage = Image.FromFile(@"min.png");
+                                buttons[bt].BackgroundImageLayout = ImageLayout.Stretch;
+                                min++;
+                            }
+                            else
+                            goto A;
+                                 break;
+                        case 2:
+                        A:
+                            if (ser < (max * 2))
+                            {
+                                buttons[bt].BackgroundImage = Image.FromFile(@"ser.png");
+                                buttons[bt].BackgroundImageLayout = ImageLayout.Stretch;
+                                ser++;
+                            }
+                            else
+                                goto B;
+                            break;
+                        case 3:
+                            B:
+                                buttons[bt].BackgroundImage = Image.FromFile(@"max.png");
+                                buttons[bt].BackgroundImageLayout = ImageLayout.Stretch;
+                                max++;
+                            break;
+                    }
+                }
+                else
+                    i--;
+            }
+            
         }
 
         private void CheckRows(int index)
