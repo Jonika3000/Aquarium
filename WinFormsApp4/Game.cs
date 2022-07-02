@@ -13,6 +13,7 @@ namespace WinFormsApp4
     public partial class Game : Form
     {
         List<Button> buttons;
+        int Level = 1; 
         public Game()
         {
             InitializeComponent();
@@ -35,7 +36,24 @@ namespace WinFormsApp4
         {
           Random rnd1 = new Random();
           Random rnd = new Random();
-            rnd1.Next(2, 30);
+            switch (Level)
+            {
+                case 1:
+                    rnd1.Next(2, 7);
+                    break;
+                case 2:
+                    rnd1.Next(8, 13);
+                    break;
+                case 3:
+                    rnd1.Next(14, 19);
+                    break;
+                case 4:
+                    rnd1.Next(20, 25);
+                    break;
+                    case 5:
+                    rnd1.Next(26, 31);
+                    break;
+            }
 
 
         }
