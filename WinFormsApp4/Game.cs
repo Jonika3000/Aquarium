@@ -26,5 +26,10 @@ namespace WinFormsApp4
         {
             this.Close();
         }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
