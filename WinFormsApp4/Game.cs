@@ -12,9 +12,11 @@ namespace WinFormsApp4
 {
     public partial class Game : Form
     {
+        List<Button> buttons;
         public Game()
         {
             InitializeComponent();
+            buttons = new List<Button>() { button1, button4 };
             BackgroundImage = Image.FromFile(@"71R5y3NAQSL.jpg");
             this.BackgroundImageLayout = ImageLayout.Zoom;
             button1.BackgroundImage = System.Drawing.Image.FromFile(@"close-exit-stop-button-icon-95968.png");
