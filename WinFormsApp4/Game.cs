@@ -68,7 +68,7 @@ namespace WinFormsApp4
                     if (buttons[idx].BackgroundImage.Size == max1.Size)
                         FishIndex = 3;
                 }
-                 catch (Exception Ex)
+                 catch  (InvalidCastException x)
                 {
 
                 }
@@ -206,7 +206,7 @@ namespace WinFormsApp4
                 if (buttons[r].Image== buttons[index].Image)
                 {
                     buttons[r].BackgroundImage = null;
-                    buttons[r].BackColor = Color.White;
+                    buttons[r].BackColor = Color.Transparent;
                 }
                 r = r - 6;
             } 
