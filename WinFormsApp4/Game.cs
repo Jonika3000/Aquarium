@@ -63,7 +63,14 @@ namespace WinFormsApp4
                     FishIndex = 2;
                 if (buttons[idx].BackgroundImage.Size == max1.Size)
                     FishIndex = 3;
-                buttons[idx].BackgroundImage = null;
+                if (buttons[idx].BackColor == Color.Red)
+                {
+                    buttons[idx].FlatStyle = FlatStyle.Flat;
+                    buttons[idx].BackColor = Color.Transparent;
+                    buttons[idx].FlatAppearance.MouseDownBackColor = Color.Transparent;
+                    buttons[idx].FlatAppearance.MouseOverBackColor = Color.Transparent;
+                }
+                    buttons[idx].BackgroundImage = null;
                 
             }
             else//еслы ми имеем рыбу
@@ -78,10 +85,7 @@ namespace WinFormsApp4
                 {
                     CheckRows(idx);
                     buttons[idx].BackgroundImage = null;
-                    buttons[idx].FlatStyle = FlatStyle.Flat;
                     buttons[idx].BackColor = Color.Transparent;
-                    buttons[idx].FlatAppearance.MouseDownBackColor = Color.Transparent;
-                    buttons[idx].FlatAppearance.MouseOverBackColor = Color.Transparent;
                     buffer = false;
                 }
                 else if (FishIndex < o)
@@ -205,7 +209,7 @@ namespace WinFormsApp4
             int count1 = 0;
             foreach (Button button in buttons)
             {
-                if(button.BackgroundImage == null)
+                if(button.BackgroundImage == null && button.BackColor == Color.Transparent)
                     count++;
                 else if(button.BackgroundImage != null)
                     count1++;
