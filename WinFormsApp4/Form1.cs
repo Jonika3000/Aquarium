@@ -13,8 +13,6 @@ namespace WinFormsApp4
         }
         void ButtonLoad(object sender , EventArgs e)
         {
-            button1.BackColor = Color.Aqua;
-            button2.BackColor = Color.Aqua;
             button1.BackgroundImage = System.Drawing.Image.FromFile(@"17550.png");
             button1.Text = "";
             button1.BackgroundImageLayout = ImageLayout.Stretch;
