@@ -220,7 +220,7 @@ namespace WinFormsApp4
                 Level++;
                 RandomButtons();
             }
-            if(count1 == 1)
+          else  if(count1 == 1)
             {
                 ClearField();
                 Level++;
