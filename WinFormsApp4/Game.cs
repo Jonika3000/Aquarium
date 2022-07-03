@@ -148,16 +148,28 @@ namespace WinFormsApp4
         private void SwitchLevel()
         {
             int count = 0;
+            int count1 = 0;
             foreach (Button button in buttons)
             {
                 if(button.BackgroundImage == null)
                     count++;
+                else if(button.BackgroundImage != null)
+                    count1++;
             }
-            if(count == 30)
+            if (count == 30)
             {
                 Level++;
-                RandomButtons();            }
+                RandomButtons();
+            }
+            if(count1 == 1)
+            {
+                Level++;
+                RandomButtons();
+            }
         }
+
+        
+        
         private void button14_Click(object sender, EventArgs e)
         {
 
