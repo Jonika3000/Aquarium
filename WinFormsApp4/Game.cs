@@ -57,27 +57,31 @@ namespace WinFormsApp4
             if (buffer == false)//если ми берем рыбу
             {
                 buffer = true;
-                if (btn.BackgroundImage.Size   == min1.Size)
+                if (buttons[idx].BackgroundImage.Size   == min1.Size)
                     FishIndex = 1;
-                if (btn.BackgroundImage.Size == ser1.Size)
+                if (buttons[idx].BackgroundImage.Size == ser1.Size)
                     FishIndex = 2;
-                if (btn.BackgroundImage.Size == max1.Size)
+                if (buttons[idx].BackgroundImage.Size == max1.Size)
                     FishIndex = 3;
                 buttons[idx].BackgroundImage = null;
                 
             }
             else//еслы ми имеем рыбу
             {
-                if (btn.BackgroundImage.Size == min1.Size)
+                if (buttons[idx].BackgroundImage.Size == min1.Size)
                     o = 1;
-                if (btn.BackgroundImage.Size == ser1.Size)
+                if (buttons[idx].BackgroundImage.Size == ser1.Size)
                     o = 2;
-                if (btn.BackgroundImage.Size == max1.Size)
+                if (buttons[idx].BackgroundImage.Size == max1.Size)
                     o = 3;
                 if ((buttons[idx].BackColor == Color.Red) && (FishIndex<o))
                 {
                     CheckRows(idx);
                     buttons[idx].BackgroundImage = null;
+                    buttons[idx].FlatStyle = FlatStyle.Flat;
+                    buttons[idx].BackColor = Color.Transparent;
+                    buttons[idx].FlatAppearance.MouseDownBackColor = Color.Transparent;
+                    buttons[idx].FlatAppearance.MouseOverBackColor = Color.Transparent;
                     buffer = false;
                 }
                 else if (FishIndex < o)
