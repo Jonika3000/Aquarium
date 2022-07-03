@@ -5,7 +5,9 @@ namespace WinFormsApp4
         public Form1()
         {
             InitializeComponent();
+            Text = "$eledk@.exe";
             BackgroundImage = Image.FromFile(@"71R5y3NAQSL.jpg");
+            this.Icon = new Icon(@"pivo.ico");
             this.BackgroundImageLayout = ImageLayout.Zoom;
             Shown += ButtonLoad;
             button1.Click += button1_Click;

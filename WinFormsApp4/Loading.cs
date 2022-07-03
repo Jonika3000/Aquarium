@@ -24,6 +24,8 @@ namespace WinFormsApp4
         
         private void Form1_Load(object sender, EventArgs e)
         {
+            Text = "$eledk@.exe";
+            this.Icon = new Icon(@"pivo.ico");
             timer.Interval = 5000;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();

@@ -24,6 +24,8 @@ namespace WinFormsApp4
                                            button14 , button15 , button16 , button17 , button18 , button19 ,
                                            button20 , button21 , button22 , button23 , button24 , button25 , 
                                            button26 , button27 , button28 , button29 , button30 , button31 };
+            this.Icon = new Icon(@"pivo.ico");
+            Text = "$eledk@.exe";
             BackgroundImage = Image.FromFile(@"71R5y3NAQSL.jpg");
             this.BackgroundImageLayout = ImageLayout.Zoom;
             Shown += First;
@@ -57,12 +59,19 @@ namespace WinFormsApp4
             if (buffer == false)//если ми берем рыбу
             {
                 buffer = true;
-                if (buttons[idx].BackgroundImage.Size   == min1.Size)
-                    FishIndex = 1;
-                if (buttons[idx].BackgroundImage.Size == ser1.Size)
-                    FishIndex = 2;
-                if (buttons[idx].BackgroundImage.Size == max1.Size)
-                    FishIndex = 3;
+                try
+                {
+                    if (buttons[idx].BackgroundImage.Size == min1.Size)
+                        FishIndex = 1;
+                    if (buttons[idx].BackgroundImage.Size == ser1.Size)
+                        FishIndex = 2;
+                    if (buttons[idx].BackgroundImage.Size == max1.Size)
+                        FishIndex = 3;
+                }
+                 catch (Exception Ex)
+                {
+
+                }
                 if (buttons[idx].BackColor == Color.Red)
                 {
                     buttons[idx].FlatStyle = FlatStyle.Flat;
@@ -133,16 +142,16 @@ namespace WinFormsApp4
                         bt= rnd1.Next(2, 7);
                         break;
                     case 2:
-                        bt=rnd1.Next(8, 13);
+                        bt=rnd1.Next(2, 13);
                         break;
                     case 3:
-                        bt=rnd1.Next(14, 19);
+                        bt=rnd1.Next(2, 19);
                         break;
                     case 4:
-                        bt=rnd1.Next(20, 25);
+                        bt=rnd1.Next(2, 25);
                         break;
                     case 5:
-                        bt=rnd1.Next(26, 31);
+                        bt=rnd1.Next(2, 31);
                         break;
                 }
                 if (buttons[bt].BackgroundImage == null)
@@ -217,17 +226,29 @@ namespace WinFormsApp4
             if (count == 30)
             {
                 ClearField();
-                Level++;
+                AddLevel();
                 RandomButtons();
             }
           else  if(count1 == 1)
             {
                 ClearField();
-                Level++;
+                AddLevel();
                 RandomButtons();
             }
         }
-
+        void AddLevel()
+        {
+            if (Level < 6)
+                Level++;
+            else
+            {
+                var result = MessageBox.Show("You won!!!", "Game over!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (result == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
+        }
         private void ClearField()
         {
             foreach (Button button in buttons)
