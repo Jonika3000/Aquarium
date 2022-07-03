@@ -216,17 +216,27 @@ namespace WinFormsApp4
             }
             if (count == 30)
             {
+                ClearField();
                 Level++;
                 RandomButtons();
             }
             if(count1 == 1)
             {
+                ClearField();
                 Level++;
                 RandomButtons();
             }
         }
 
-        
+        private void ClearField()
+        {
+            foreach (Button button in buttons)
+            {
+                button.BackgroundImage = null;
+                button.FlatStyle = FlatStyle.Flat;
+                button.BackColor = Color.Transparent;
+            }
+        }
         
         private void button14_Click(object sender, EventArgs e)
         {
