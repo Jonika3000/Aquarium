@@ -47,37 +47,45 @@ namespace WinFormsApp4
         }
         void Move(object sender, EventArgs e )
         {
+            Image min1 = Image.FromFile(@"min.png");
+            Image ser1 = Image.FromFile(@"ser.png");
+            Image max1 = Image.FromFile(@"max.png");
             Button btn = (Button)sender;
             var idx =  buttons.FindIndex(a => a.Name == btn.Name);
             int o = 0;
-            if(buffer == false)//если ми берем рыбу
+            
+            if (buffer == false)//если ми берем рыбу
             {
                 buffer = true;
-                btn.BackgroundImage = null;
-                if (buttons[idx].Image == Image.FromFile(@"min.png"))
+                if (btn.BackgroundImage.Size   == min1.Size)
                     FishIndex = 1;
-                if (buttons[idx].Image == Image.FromFile(@"ser.png"))
-                    FishIndex =2;
-                if (buttons[idx].Image == Image.FromFile(@"max.png"))
+                if (btn.BackgroundImage.Size == ser1.Size)
+                    FishIndex = 2;
+                if (btn.BackgroundImage.Size == max1.Size)
                     FishIndex = 3;
+                buttons[idx].BackgroundImage = null;
+                
             }
             else//еслы ми имеем рыбу
             {
-                if (buttons[idx].Image == Image.FromFile(@"min.png"))
+                if (btn.BackgroundImage.Size == min1.Size)
                     o = 1;
-                if (buttons[idx].Image == Image.FromFile(@"ser.png"))
+                if (btn.BackgroundImage.Size == ser1.Size)
                     o = 2;
-                if (buttons[idx].Image == Image.FromFile(@"max.png"))
+                if (btn.BackgroundImage.Size == max1.Size)
                     o = 3;
                 if ((buttons[idx].BackColor == Color.Red) && (FishIndex<o))
                 {
                     CheckRows(idx);
+                    buttons[idx].BackgroundImage = null;
+                    buffer = false;
                 }
                 else if (FishIndex < o)
                 {
                     buttons[idx].BackColor = Color.Red;
+                    buffer = false;
                 }
-                buffer = false;
+                
                 SwitchLevel();
             }
         }
@@ -131,37 +139,40 @@ namespace WinFormsApp4
                 }
                 if (buttons[bt].BackgroundImage == null)
                 {
-
-                    switch (fish)
+                    if (min == 0 && max == 0 && ser ==0)
                     {
-                        case 1:
-                            if (((ser != 0) || (max != 0)) && ((min < (ser * 2)) || (min < (max * 2))))
-                            {
-                                buttons[bt].BackgroundImage = Image.FromFile(@"min.png");
-                                buttons[bt].BackgroundImageLayout = ImageLayout.Stretch;
-                                min++;
-                            }
-                            else
-                            goto A;
-                                 break;
-                        case 2:
-                        A:
-                            if (ser < (max * 2))
-                            {
-                                buttons[bt].BackgroundImage = Image.FromFile(@"ser.png");
-                                buttons[bt].BackgroundImageLayout = ImageLayout.Stretch;
-                                ser++;
-                            }
-                            else
-                                goto B;
-                            break;
-                        case 3:
-                            B:
-                                buttons[bt].BackgroundImage = Image.FromFile(@"max.png");
-                                buttons[bt].BackgroundImageLayout = ImageLayout.Stretch;
-                                max++;
-                            break;
+                        buttons[bt].BackgroundImage = Image.FromFile(@"max.png");
+                        buttons[bt].BackgroundImageLayout = ImageLayout.Stretch;
+                        max++;
+                        continue;
                     }
+                    if (((min < (ser * 2)) || (min < (max * 2))) && fish == 1)
+                    {
+                        buttons[bt].BackgroundImage = Image.FromFile(@"min.png");
+                        buttons[bt].BackgroundImageLayout = ImageLayout.Stretch;
+                        min++;
+
+                    }
+                    else if (fish == 1)
+                        fish++;
+                     if ((ser < (max * 2)) && fish == 2)
+                    {
+                        buttons[bt].BackgroundImage = Image.FromFile(@"ser.png");
+                        buttons[bt].BackgroundImageLayout = ImageLayout.Stretch;
+                        ser++;
+
+                    }
+                    else if(fish == 2)
+                        fish++;
+                     if  ((ser>=2 || min >=2) && (fish == 3) )
+                    {
+                        buttons[bt].BackgroundImage = Image.FromFile(@"max.png");
+                        buttons[bt].BackgroundImageLayout = ImageLayout.Stretch;
+                        max++;
+
+                    }
+                     
+
                 }
                 else
                     i--;
@@ -172,15 +183,16 @@ namespace WinFormsApp4
         {
             int r;
             r = index;
-            do
+            r = r - 6;
+            while (r > 0)
             { 
-                r = r - 6;
-                if (buttons[r].ImageIndex == index)
+                if (buttons[r].Image== buttons[index].Image)
                 {
                     buttons[r].BackgroundImage = null;
                     buttons[r].BackColor = Color.White;
                 }
-            }while(r > 0);
+                r = r - 6;
+            } 
             
         }
         private void SwitchLevel()
